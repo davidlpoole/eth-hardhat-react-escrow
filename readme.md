@@ -2,7 +2,7 @@
 
 This is an Escrow Dapp built with [Hardhat](https://hardhat.org/).
 
-## Tasks
+## Tasks/solutions
 
 ### 1: Run the dApp on a Live Testnet 🌐
 Developed on a local Hardhat node, tested on Chrome with MetaMask. Not deployed to Sepolia though.
