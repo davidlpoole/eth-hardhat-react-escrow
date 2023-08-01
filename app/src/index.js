@@ -7,7 +7,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 if (!window.ethereum) {
     root.render(
         <React.StrictMode>
-            You need to install a browser wallet to build the escrow dapp
+            You need to install a Web3 browser wallet (such as MetaMask) to use this dapp.
         </React.StrictMode>
     );
 } else {

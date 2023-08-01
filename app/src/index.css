@@ -1,10 +1,24 @@
 body {
   background-color: #eee;
-  display: flex;
   font-family: 'Muli', sans-serif;
 }
 
-.contract, .existing-contracts {
+.main-container {
+  display: flex;
+  justify-content: center;
+}
+
+.new-contract {
+  flex-grow: 1;
+  /*flex-basis: 1000px;*/
+}
+
+.existing-contracts {
+  flex-grow: 1;
+  /*flex-basis: 1000px;*/
+}
+
+.new-contract, .existing-contracts {
   margin: 20px;
   display: inline-block;
   padding: 40px;

@@ -40,14 +40,12 @@ function App() {
     const [escrows, setEscrows] = useState([]);
     const [account, setAccount] = useState();
     const [signer, setSigner] = useState();
-    const [accounts, setAccounts] = useState([]);
     const [escrowAddresses, setEscrowAddresses] = useState([]);
 
     useEffect(() => {
         async function getAccounts() {
             console.log('getAccounts');
             const accounts = await provider.send('eth_requestAccounts', []);
-            setAccounts(accounts);
             setAccount(accounts[0]);
             setSigner(provider.getSigner());
         }
@@ -81,7 +79,7 @@ function App() {
     async function newContract() {
         const beneficiary = document.getElementById('beneficiary').value;
         const arbiter = document.getElementById('arbiter').value;
-        const value = ethers.BigNumber.from(document.getElementById('wei').value);
+        const value = ethers.BigNumber.from(ethers.utils.parseEther(document.getElementById('ether').value));
         const escrowContract = await deploy(signer, arbiter, beneficiary, value);
         const deployed = await escrowContract.deployed();
         console.log('deployed', deployed);
@@ -97,13 +95,8 @@ function App() {
     }
 
     return (
-        <>
-            <div>account: {account}</div>
-            <div>accounts: {JSON.stringify(accounts)}</div>
-            <div>escrows: {JSON.stringify(escrows)}</div>
-            <div>escrowAddresses: {JSON.stringify(escrowAddresses)}</div>
-
-            <div className="contract">
+        <div className="main-container">
+            <div className="new-contract">
                 <h1> New Contract </h1>
                 <label>
                     Arbiter Address
@@ -116,8 +109,8 @@ function App() {
                 </label>
 
                 <label>
-                    Deposit Amount (in Wei)
-                    <input type="text" id="wei"/>
+                    Deposit Amount (in Ether)
+                    <input type="text" id="ether"/>
                 </label>
 
                 <div
@@ -138,27 +131,11 @@ function App() {
                 <div id="container">
                     {escrows.map((escrow) => {
                         return <Escrow key={escrow.address} {...escrow} handleRemove={handleRemove} />;
-                        // return <li key={escrow.address}>{JSON.stringify(escrow)}</li>
                     })}
                 </div>
             </div>
 
-            {/*<div className="existing-contracts">*/}
-            {/*  <div id="container">*/}
-            {/*    <label>*/}
-            {/*      Contract Address*/}
-            {/*      <input type="text" id="contractAddr" />*/}
-            {/*    </label>*/}
-            {/*    <div*/}
-            {/*        className="button"*/}
-            {/*        id='approve'*/}
-            {/*        onClick={()=>{getEscrowDetails(document.getElementById('contractAddr').value)}}*/}
-            {/*    >*/}
-            {/*      Get Contract*/}
-            {/*    </div>*/}
-            {/*  </div>*/}
-            {/*</div>*/}
-        </>
+        </div>
     );
 }
 

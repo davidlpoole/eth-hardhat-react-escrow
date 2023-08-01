@@ -1,3 +1,5 @@
+import {ethers} from "ethers";
+
 export default function Escrow({
                                    address,
                                    sender,
@@ -29,7 +31,7 @@ export default function Escrow({
                 </li>
                 <li>
                     <div> Value</div>
-                    <div> {value.toString()} Wei</div>
+                    <div> {ethers.utils.formatUnits(value, "ether")} Ether</div>
                 </li>
                 <div
                     className={isApproved ? "complete" : "button"}
