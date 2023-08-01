@@ -6,6 +6,7 @@ export default function Escrow({
                                    value,
                                    isApproved,
                                    handleApprove,
+                                   handleRemove
                                }) {
     return (
         <div className="existing-contract">
@@ -39,6 +40,16 @@ export default function Escrow({
                     }}
                 >
                     {isApproved ? '✓ It\'s been approved!' : 'Approve'}
+                </div>
+                <div
+                    className={"button"}
+                    id={address}
+                    onClick={(e) => {
+                        e.preventDefault();
+                        handleRemove(address);
+                    }}
+                >
+                    Remove from list
                 </div>
             </ul>
         </div>

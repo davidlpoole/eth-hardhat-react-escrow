@@ -89,6 +89,13 @@ function App() {
         setEscrowAddresses(JSON.parse(localStorage.getItem('items')));
     }
 
+    function handleRemove(address) {
+        const withoutAddress = escrowAddresses.filter((addr) => addr !== address);
+        setEscrowAddresses(withoutAddress);
+        localStorage.removeItem('items');
+        localStorage.setItem('items', JSON.stringify(withoutAddress));
+    }
+
     return (
         <>
             <div>account: {account}</div>
@@ -130,7 +137,7 @@ function App() {
 
                 <div id="container">
                     {escrows.map((escrow) => {
-                        return <Escrow key={escrow.address} {...escrow} />;
+                        return <Escrow key={escrow.address} {...escrow} handleRemove={handleRemove} />;
                         // return <li key={escrow.address}>{JSON.stringify(escrow)}</li>
                     })}
                 </div>
