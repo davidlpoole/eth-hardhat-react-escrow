@@ -2,6 +2,30 @@
 
 This is an Escrow Dapp built with [Hardhat](https://hardhat.org/).
 
+## Tasks
+
+### 1: Run the dApp on a Live Testnet 🌐
+Developed on a local Hardhat node, tested on Chrome with MetaMask. Not deployed to Sepolia though.
+ 
+### 2: Stylize 🎨
+Left it pretty basic but adjusted the css flex styles to fill the screen.
+
+### 3: Wei to Ether Conversion 💱
+Used `ethers.utils.parseEther()` and `ethers.utils.formatUnits(value, "ether")` in the front end.
+
+### 4: Persistence 💾
+Refactored the front end to use local storage to persist the deployed escrow contract addresses rather than full contract objects.
+Edited the smart contract to store the value, so this can be retrieved later (after the contracts balance has been 
+transferred to the beneficiary)
+
+### 5: What else? 🤔
+Added a button to remove contracts from the 'existing contracts' list.
+Added additional details to the display of the 'existing contracts', i.e. contract and sender addresses.
+Added error messages to the smart contract, i.e. not authorised.
+
+
+
+
 ## Project Layout
 
 There are three top-level folders:
